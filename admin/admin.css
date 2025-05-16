@@ -1,0 +1,144 @@
+/* Admin Dashboard Styles */
+:root {
+    --sidebar-width: 250px;
+    --header-height: 60px;
+    --primary-color: rgb(108, 91, 123);
+    --secondary-color: hsl(345, 44%, 59%);
+}
+
+.admin-dashboard {
+    background-color: #f8f9fa;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: white;
+    border-right: 1px solid #dee2e6;
+    position: fixed;
+    padding: 1rem;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 1rem;
+}
+
+.sidebar-header .logo {
+    max-width: 150px;
+    height: auto;
+}
+
+.sidebar .nav-link {
+    color: #333;
+    padding: 0.8rem 1rem;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #f8f9fa;
+}
+
+.sidebar .nav-link.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sidebar .nav-link i {
+    font-size: 1.2rem;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: var(--sidebar-width);
+}
+
+/* Stats Cards */
+.stat-card {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card .card-body {
+    padding: 1.5rem;
+}
+
+.stat-card .card-title {
+    color: #6c757d;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card .card-text {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.stat-card .stat-icon {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 2.5rem;
+    opacity: 0.1;
+}
+
+/* Table Styles */
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    font-weight: 500;
+    background-color: #f8f9fa;
+}
+
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-approved {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+        padding: 0.5rem;
+    }
+
+    .sidebar .nav-link span {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 60px;
+    }
+
+    .sidebar-header .logo {
+        display: none;
+    }
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications - Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="admin.css" rel="stylesheet">
+</head>
+<body class="admin-dashboard">
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="../aset/name.png" alt="Bacotz Group" class="logo">
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link active">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="applications.html" class="nav-link">
+                        <i class="bi bi-file-text"></i> Applications
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="users.html" class="nav-link">
+                        <i class="bi bi-people"></i> Users
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link">
+                        <i class="bi bi-gear"></i> Services
+                    </a>
+                </li>
+                <li class="nav-item mt-auto">
+                    <a href="../logout.php" class="nav-link text-danger">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content w-100">
+            <div class="container-fluid py-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Loan Applications</h2>
+                    <div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#filterModal">
+                            <i class="bi bi-funnel"></i> Filter
+                        </button>
+                        <button class="btn btn-success" onclick="exportToExcel()">
+                            <i class="bi bi-file-earmark-excel"></i> Export
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Applications Table -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="applicationsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Date</th>
+                                        <th>Applicant</th>
+                                        <th>Service</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="applicationsData">
+                                    <!-- Data will be loaded dynamically -->
+                                </tbody>
+                            </table>
+                            <div id="pagination" class="d-flex justify-content-center mt-4">
+                                <!-- Pagination will be generated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Modal -->
+    <div class="modal fade" id="filterModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Filter Applications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" title="Close filter modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="filterForm">
+                        <div class="mb-3">
+                            <label class="form-label">Date Range</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" name="startDate" title="Start date" placeholder="Select start date">
+                                <span class="input-group-text">to</span>
+                                <input type="date" class="form-control" name="endDate" title="End date" placeholder="Select end date">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" name="status" title="Filter by status">
+                                <option value="">All</option>
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Service Type</label>
+                            <select class="form-select" name="serviceType" title="Filter by service type">
+                                <option value="">All</option>
+                                <option value="rumah">Home Loan</option>
+                                <option value="kendaraan">Vehicle Loan</option>
+                                <option value="modal">Working Capital</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="applyFilters()">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="admin.js"></script>
+    <script src="applications.js"></script>
+</body>
+</html>

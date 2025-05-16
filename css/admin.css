@@ -1,0 +1,102 @@
+/* Admin Dashboard Styles */
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #fff;
+    border-right: 1px solid #dee2e6;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    text-align: center;
+}
+
+.sidebar .logo {
+    max-width: 150px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.sidebar .nav-link {
+    color: #333;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sidebar .nav-link:hover {
+    background: #f8f9fa;
+}
+
+.sidebar .nav-link.active {
+    background: #e9ecef;
+    color: #0d6efd;
+}
+
+.sidebar .nav-link i {
+    font-size: 1.2rem;
+}
+
+/* Main Content */
+.main-content {
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-approved {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-rejected {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Cards */
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: none;
+}
+
+.card-title {
+    color: #6c757d;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Tables */
+.table th {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* User Dropdown */
+.user-name {
+    margin-left: 0.5rem;
+}
+
+/* Alert Container */
+#alertContainer {
+    z-index: 1050;
+}

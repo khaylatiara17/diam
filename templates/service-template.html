@@ -1,0 +1,32 @@
+<section class="hero">
+    <img src="../aset/{{heroImage}}" alt="{{title}}" loading="lazy" 
+         srcset="../aset/{{heroImage-small}} 600w, ../aset/{{heroImage}} 1200w"
+         sizes="(max-width: 600px) 100vw, 1200px">
+    <div class="text" data-aos="fade-up">
+        <h1>{{title}}</h1>
+        <p>{{heroDesc}}</p>
+    </div>
+</section>
+
+<section class="service-detail py-5" data-aos="fade-up">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="mb-4">{{title}}</h1>
+                <img src="../aset/{{contentImage}}" alt="{{title}}" class="img-fluid rounded mb-4">
+                <div class="content">
+                    {{content}}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <h3>Layanan Lainnya</h3>
+                    <!-- Hapus ul dan tetap gunakan each untuk menampilkan data -->
+                    {{#each otherServices}}
+                    <div><a href="{{url}}">{{name}}</a></div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembiayaan Investasi - Bacotz Group</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../aset/polos.png" type="image/png">
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <main id="main" class="main-content">
+        <!-- Service Content -->
+        <section class="service-detail py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8" data-aos="fade-up">
+                        <img src="../aset/one.jpg" alt="Pembiayaan Investasi" class="img-fluid rounded mb-4">
+                        <div class="content">
+                            <h2>Optimize Your Business Potential</h2>
+                            <p>Dorong bisnis Anda lebih maju dengan pendanaan cepat, fleksibel dan tanpa ribet.</p>
+                            <ul>
+                                <li>Plafon pembiayaan sesuai kebutuhan dengan batas maksimal yang ditentukan.</li>
+                                <li>Jangka waktu fleksibel hingga 5 tahun, sesuai dengan kesepakatan.</li>
+                                <li>Proses persetujuan dilakukan dengan cepat setelah verifikasi data.</li>
+                                <li>Persyaratan transparan dan mudah dipenuhi.</li>
+                                <li>Suku bunga bersaing sesuai ketentuan yang berlaku.</li>
+                            </ul>
+                            <h3>Persyaratan</h3>
+                            <ul>
+                                <li>Perusahaan terdaftar sebagai badan hukum yang sah.</li>
+                                <li>Memiliki legalitas usaha yang lengkap dan masih berlaku.</li>
+                                <li>Telah beroperasi secara aktif minimal 2 tahun.</li>
+                                <li>Memiliki laporan keuangan dan pajak yang dapat diverifikasi.</li>
+                                <li>Menyediakan rencana investasi yang transparan dan terdokumentasi.</li>
+                            </ul>
+                            <h3>Keunggulan</h3>
+                            <ul>
+                                <li>Analisis kredit dilakukan dengan cepat dan akurat berdasarkan data yang valid.</li>
+                                <li>Tim profesional berpengalaman yang siap memberikan layanan terbaik.</li>
+                                <li>Pendampingan dan dukungan berkelanjutan selama masa pembiayaan.</li>
+                                <li>Skema pembayaran disesuaikan dengan kemampuan dan kebutuhan peminjam.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="sidebar service-sidebar">
+                            <h3>Other Services</h3>
+                            <ul class="list-unstyled service-list">
+                                <li><a href="pembiayaan-rumah.html">Pendanaan Rumah</a></li>
+                                <li><a href="pembiayaan-kendaraan.html">Pendanaan Kendaraan</a></li>
+                                <li><a href="pembiayaan-modal-kerja.html">Pendanaan Modal Kerja</a></li>
+                                <li><a href="pembiayaan-renovasi.html">Pendanaan Renovasi</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        async function loadComponents() {
+            try {
+                const [header, footer] = await Promise.all([
+                    fetch('../templates/header.html').then(r => r.ok ? r.text() : Promise.reject('Failed to load header')),
+                    fetch('../templates/footer.html').then(r => r.ok ? r.text() : Promise.reject('Failed to load footer'))
+                ]);
+
+                document.getElementById('header-placeholder').innerHTML = header;
+                document.getElementById('footer-placeholder').innerHTML = footer;
+
+                // Fix paths for subdirectory
+                document.querySelectorAll('[src^="/"], [href^="/"]').forEach(el => {
+                    const attr = el.hasAttribute('src') ? 'src' : 'href';
+                    const value = el[attr];
+                    if (!value.startsWith('http')) {
+                        el[attr] = '..' + value;
+                    }
+                });
+
+                // Initialize navigation
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        if (link.getAttribute('href').includes('main.html')) {
+                            e.preventDefault();
+                            window.location.href = '../main.html';
+                        }
+                    });
+                });
+
+                // Initialize AOS
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true
+                });
+
+            } catch (error) {
+                console.error('Failed to load components:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComponents);
+    </script>
+
+    <style>
+        .service-sidebar {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .service-list li {
+            margin-bottom: 1rem;
+        }
+
+        .service-list a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all var(--transition-speed);
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .service-list a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateX(5px);
+        }
+    </style>
+</body>
+</html>

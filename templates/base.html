@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Title</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include shared head content -->
+    <div id="shared-head"></div>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <main id="main" class="main-content">
+        <!-- Page specific content will be injected here -->
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Common Scripts -->
+    <script>
+        // Load all shared components
+        Promise.all([
+            fetch('../templates/head.html').then(r => r.text()),
+            fetch('../header.html').then(r => r.text()),
+            fetch('../footer.html').then(r => r.text())
+        ]).then(([head, header, footer]) => {
+            document.getElementById('shared-head').innerHTML = head;
+            document.getElementById('header-placeholder').innerHTML = header;
+            document.getElementById('footer-placeholder').innerHTML = footer;
+        });
+    </script>
+</body>
+</html>

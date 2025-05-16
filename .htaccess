@@ -1,0 +1,43 @@
+# Disable directory listing
+Options -Indexes
+
+# Set default index page
+DirectoryIndex index.php index.html index.htm
+
+# Protect against XSS, clickjacking and other injection attacks
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-Content-Type-Options "nosniff"
+
+# Block access to sensitive files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to backup/config/source files
+<FilesMatch "\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist|orig|save)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Prevent script execution
+<Files ~ "\.(ph|ph3|ph4|ph5|phtml|exe|pl|py|jsp|asp|htm|shtml|sh|cgi)$">
+    Deny from all
+</Files>
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Block bad bots
+RewriteCond %{HTTP_USER_AGENT} ^(BadBot|Harvester|Anthill) [NC]
+RewriteRule .* - [F,L]
+
+# Prevent hotlinking
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?yourdomain.com [NC]
+RewriteRule \.(jpg|jpeg|png|gif)$ - [NC,F,L]
